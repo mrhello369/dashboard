@@ -43,7 +43,17 @@ npm install
 
 ### Start dashboard
 
-Once you've [set up your development environment](#prerequisites), run following command and `dashboard` can be launhed with the code you cloned:
+After you've [set up your development environment](#prerequisites), please config the API endpoint in file `dashboard/web/src/common/network/http-common.js`. For example, my API endpoint is `http://192.168.1.3:8080`:
+```
+import axios from "axios";
+
+export default axios.create({
+  baseURL: "http://192.168.1.3:8080/api/v1",
+});
+
+```
+
+Run following command and `dashboard` can be launhed with the code you cloned:
 ```sh
 cd web
 PORT=3001 npm start --host 0.0.0.0
