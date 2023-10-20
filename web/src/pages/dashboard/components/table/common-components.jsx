@@ -101,7 +101,6 @@ export const InstanceHeader = ({ ...props }) => {
           <Button disabled={!isOnlyOneSelected}>View details</Button>
           <Button disabled={!isOnlyOneSelected}>Edit</Button>
           <Button disabled={props.selectedItems.length === 0}>Delete</Button>
-          <Button variant="primary">Create instance</Button>
         </SpaceBetween>
       }
     />

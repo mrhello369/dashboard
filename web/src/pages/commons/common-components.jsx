@@ -55,10 +55,10 @@ export const TableEmptyState = ({ resourceName }) => (
       <div>
         <b>No {resourceName.toLowerCase()}s</b>
         <Box variant="p" color="inherit">
-          No {resourceName.toLowerCase()}s associated with this resource.
+          No {resourceName.toLowerCase()}s associated with this cluster.
         </Box>
       </div>
-      <Button>Create {resourceName.toLowerCase()}</Button>
+      <Button>Loading {resourceName.toLowerCase()}</Button>
     </SpaceBetween>
   </Box>
 );

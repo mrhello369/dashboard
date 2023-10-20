@@ -117,7 +117,7 @@ export function WorkloadCostDashboard(props) {
     paginationProps,
   } = useCollection(workloadCostJsonArray, {
     filtering: {
-      empty: <TableEmptyState resourceName="Instance" />,
+      empty: <TableEmptyState resourceName="Workload" />,
       noMatch: (
         <TableNoMatchState onClearFilter={() => actions.setFiltering("")} />
       ),

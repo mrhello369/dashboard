@@ -8,7 +8,7 @@ import {
   Button,
   Box,
 } from "@cloudscape-design/components";
-import { percentageFormatter } from "../components-common";
+import { keepTwoDecimal, percentageFormatter } from "../components-common";
 
 const i18nStrings = {
   detailsValue: "Value",
@@ -31,7 +31,7 @@ export default function NamespaceCostAllocation(props) {
   const totalCostMap = new Map();
   let totalCost = 0;
   namespaceCostMap.forEach((data, key) => {
-    const workloadCost =  data.totalCost;
+    const workloadCost =  keepTwoDecimal(data.totalCost);
     totalCost += workloadCost;
     totalCostMap.set(key, workloadCost);
   });
@@ -49,17 +49,17 @@ export default function NamespaceCostAllocation(props) {
       <PieChart
         size="large"
         data={totalCostData}
-        ariaLabel="CPU allocation chart"
-        ariaDescription="CPU allocation chart."
+        ariaLabel="Namespace allocation chart"
+        ariaDescription="Namespace allocation chart."
         hideFilter={true}
         segmentDescription={(datum, sum) =>
-          `$${datum.value.toFixed(2)}, ${percentageFormatter(datum.value / sum)}`
+          `$${datum.value}, ${percentageFormatter(datum.value / sum)}`
         }
         i18nStrings={i18nStrings}
         errorText="Error loading data."
         hideLegend={false}
         innerMetricDescription="Total Cost"
-        innerMetricValue={"$" + totalCost.toFixed(2)}
+        innerMetricValue={"$" + keepTwoDecimal(totalCost)}
         loadingText="Loading chart"
         recoveryText="Retry"
         variant="donut"

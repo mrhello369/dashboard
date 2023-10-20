@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import apiClient from "../../../../common/network/http-common";
 import moment from "moment";
 import { NamespaceCostInfo } from "../model/namespace/namespace-cost";
+import { keepTwoDecimal } from "../components-common";
 
 export function NamespaceCostHeader(props) {
   const { clusterId } = useParams();
