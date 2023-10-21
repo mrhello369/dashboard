@@ -8,7 +8,7 @@ import {
   Button,
   Box,
 } from "@cloudscape-design/components";
-import { keepTwoDecimal, percentageFormatter } from "../components-common";
+import { keepThreeDecimal, percentageFormatter } from "../components-common";
 
 const i18nStrings = {
   detailsValue: "Value",
@@ -31,9 +31,12 @@ export default function NamespaceCostAllocation(props) {
   const totalCostMap = new Map();
   let totalCost = 0;
   namespaceCostMap.forEach((data, key) => {
-    const workloadCost =  keepTwoDecimal(data.totalCost);
+    const workloadCost =  data.totalCost;
     totalCost += workloadCost;
     totalCostMap.set(key, workloadCost);
+  });
+  totalCostMap.forEach((value, key) => {
+    totalCostMap.set(key, keepThreeDecimal(value));
   });
   console.log("totalCostMap = ", totalCostMap);
   const totalCostData = Array.from(totalCostMap).map(([title, value]) => ({
@@ -59,7 +62,7 @@ export default function NamespaceCostAllocation(props) {
         errorText="Error loading data."
         hideLegend={false}
         innerMetricDescription="Total Cost"
-        innerMetricValue={"$" + keepTwoDecimal(totalCost)}
+        innerMetricValue={"$" + keepThreeDecimal(totalCost)}
         loadingText="Loading chart"
         recoveryText="Retry"
         variant="donut"
